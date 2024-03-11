@@ -5,13 +5,13 @@ pipeline{
     stages{
 
         stage('Build Jar'){
-            step{
+            steps{
                 bat 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Image'){
-            step{
+            steps{
                 bat 'docker build -t=ravilohana/selenium-docker:latest .'
             }
         }
@@ -20,7 +20,7 @@ pipeline{
             environment{
                 DOCKER_HUB = credentials('lohanadocker-creds')
             }
-            step{
+            steps{
                 bat 'docker login -u ${DOCKER_HUB_USR} -p{DOCKER_HUB_PSW}'
                 bat "docker push ravilohana/selenium-docker:latest"
             }
