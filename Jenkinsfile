@@ -21,7 +21,10 @@ pipeline{
                 DOCKER_HUB = credentials('lohanadocker-creds')
             }
             steps{
-                bat 'docker login -u ${DOCKER_HUB_USR} -p{DOCKER_HUB_PSW}'
+                bat '"echo user: ${DOCKER_HUB_USR} ==== password: ${DOCKER_HUB_PSW} "'
+//                bat 'docker login -u ${DOCKER_HUB_USR} -p{DOCKER_HUB_PSW}'
+                bat 'docker login -u ${DOCKER_HUB_USR} --password-stdin'
+                bat 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
                 bat "docker push ravilohana/selenium-docker:latest"
             }
         }
