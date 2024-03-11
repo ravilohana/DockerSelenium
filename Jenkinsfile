@@ -2,6 +2,11 @@ pipeline{
 
     agent any
 
+    environment {
+        DATE = new Date().format('yy.M')
+        TAG = "${DATE}.${BUILD_NUMBER}"
+    }
+
     stages{
 
         stage('Build Jar'){
@@ -12,19 +17,22 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                bat 'docker build -t=ravilohana/selenium-docker:latest .'
+                script{
+                    docker.build("ravilohana/selenium-docker:${TAG}")
+                }
             }
         }
 
         stage('Push Image'){
-            environment{
-                DOCKER_HUB = credentials('lohanadocker-creds')
-            }
             steps{
-                bat '"echo user: ${DOCKER_HUB_USR} ==== password: ${DOCKER_HUB_PSW} "'
-                bat 'docker login -u ${DOCKER_HUB_USR} --password-stdin'
-                bat 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
-                bat "docker push ravilohana/selenium-docker:latest"
+
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com','lohanadocker-creds'){
+                        docker.image("ravilohana/selenium-docker:${TAG}").push()
+                        docker.image("ravilohana/selenium-docker:${TAG}").push("latest")
+                    }
+
+                }
             }
         }
     }
