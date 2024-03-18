@@ -27,7 +27,7 @@ pipeline{
             steps{
 
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com','lohanadocker-creds'){
+                    docker.withRegistry('','lohanadocker-creds'){
                         docker.image("ravilohana/selenium-docker:${TAG}").push()
                         docker.image("ravilohana/selenium-docker:${TAG}").push("latest")
                     }

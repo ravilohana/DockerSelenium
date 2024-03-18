@@ -46,5 +46,6 @@ build/
 command_info.txt
 
 ### not required folder for git
-
+./.gitignore
 ./command_info_txt
+./dockerCreds.txt
