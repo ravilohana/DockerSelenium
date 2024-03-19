@@ -10,6 +10,15 @@ pipeline{
     stages{
 
         stage('Build Jar'){
+
+            agent{
+                docker{
+                    image 'maven:3.9.3-eclipse-temurin-17-focal'
+                    args '-u root -v C:/Users/lohan/.m2/:/root/.m2'
+                }
+            }
+
+
             steps{
                 bat 'mvn clean package -DskipTests'
             }
