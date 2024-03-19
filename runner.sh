@@ -21,7 +21,7 @@
   do
     count=$((count+1))
     echo "Attempt: ${count}"
-    if [ "$count" -ge 30 ]
+    if [ "$count" -ge 30 ];
     then
       echo "***** HUB_HOST This NOT READY WITHIN 30 SECONDS *****"
       exit 1
