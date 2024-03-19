@@ -14,7 +14,6 @@ pipeline{
             agent{
                 docker{
                     image 'maven:3.9.3-eclipse-temurin-17-focal'
-                    args "-u root -v //C://Users//lohan//.m2//:/root/.m2"
                 }
             }
 
@@ -36,7 +35,7 @@ pipeline{
             steps{
 
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com','lohanadocker-creds'){
+                    docker.withRegistry('','lohanadocker-creds'){
                         docker.image("ravilohana/selenium-docker:${TAG}").push()
                         docker.image("ravilohana/selenium-docker:${TAG}").push("latest")
                     }
