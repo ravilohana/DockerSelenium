@@ -1,4 +1,4 @@
-#!/bin/bash
+
 #----------------------------------------------------------------
 # This script expects the following environment variables
 #
