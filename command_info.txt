@@ -1,0 +1,29 @@
+mvn clean test -D suiteFile="./src/test/resources/test-suites/flight-reservation.xml" -D browserName="CHROME"
+mvn clean test -D suiteFile="./src/test/resources/test-suites/flight-reservation.xml" -D browserName="MS-EDGE"
+mvn clean test -D suiteFile="./src/test/resources/test-suites/flight-reservation.xml" -D browserName="FIREFOX"
+
+
+
+
+mvn clean test -D suiteFile="./src/test/resources/test-suites/vendor-portal.xml" -D browserName="FIREFOX"
+mvn clean test -D suiteFile="./src/test/resources/test-suites/vendor-portal.xml" -D browserName="CHROME"
+mvn clean test -D suiteFile="./src/test/resources/test-suites/vendor-portal.xml" -D browserName="MS-EDGE"
+
+mvn clean test -D suiteFile="./target/docker-resources/test-suites/flight-reservation.xml" -D browserName="FIREFOX"
+mvn clean test -D suiteFile="./target/docker-resources/test-suites/vendor-portal.xml" -D browserName="FIREFOX"
+
+
+
+mvn clean package -DskipTests
+
+docker build -t=ravilohana/selenium-docker:01 .
+
+
+docker run -it -v ${PWD}/results:/home/selenium-docker/test-output ravilohana/selenium-docker:01
+
+java -DbrowserName=chrome -Dselenium.grid.enabled=true -Dselenium.grid.hubHost=localhost -cp 'libs/*' org.testng.TestNG test-suites/vendor-por
+tal.xml
+
+
+java -D"browserName=firefox" -D"selenium.grid.enable=true" -D"selenium.grid.hubHost=192.168.0.143" -cp 'libs/*' org.testng.TestNG test-suites/flight-reservation.xml
+java -D"browserName=ms-edge" -D"selenium.grid.enable=true" -D"selenium.grid.hubHost=192.168.0.143" -cp 'libs/*' org.testng.TestNG test-suites/vendor-portal.xml

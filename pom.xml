@@ -48,13 +48,13 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-<!--        &lt;!&ndash; web-driver manager for local testing &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.github.bonigarcia</groupId>-->
-<!--            <artifactId>webdrivermanager</artifactId>-->
-<!--            <version>${webdriver.manager.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; web-driver manager for local testing &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.github.bonigarcia</groupId>-->
+        <!--            <artifactId>webdrivermanager</artifactId>-->
+        <!--            <version>${webdriver.manager.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
         <!-- To deserialize json into Java object or vice versa -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -97,7 +97,7 @@
                 </executions>
                 <configuration>
                     <systemPropertyVariables>
-<!--                        <browser>chrome</browser>-->
+                        <!--                        <browser>chrome</browser>-->
                         <selenium.grid.enable>false</selenium.grid.enable>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
