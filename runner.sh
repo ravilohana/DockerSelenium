@@ -17,7 +17,7 @@
   # Do not start the test immediately. HUb has to ready with browser nodes
   echo "Checking if Hub is ready...!"
   count=0
-  while [ "$(curl -s http://${HUB_HOST:-selenium-hub}:4444/status | jq -r .value.ready )" != "true" ]
+  while [ "$(curl -s http://"${HUB_HOST:-selenium-hub}":4444/status | jq -r .value.ready )" != "true" ]
   do
     count=$((count+1))
     echo "Attempt: ${count}"
