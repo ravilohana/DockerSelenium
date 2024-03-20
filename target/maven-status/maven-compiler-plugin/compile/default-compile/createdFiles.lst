@@ -1,0 +1,8 @@
+com\lohana\pages\vendorportal\DashboardPage.class
+com\lohana\pages\AbstractPage.class
+com\lohana\pages\vendorportal\LoginPage.class
+com\lohana\pages\flightreservation\RegistrationPage.class
+com\lohana\pages\flightreservation\FlightConfirmationPage.class
+com\lohana\pages\flightreservation\RegistrationConfirmationPage.class
+com\lohana\pages\flightreservation\FlightsSearchPage.class
+com\lohana\pages\flightreservation\FlightsSelectionPage.class
